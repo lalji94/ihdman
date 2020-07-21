@@ -32,18 +32,12 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
           var siteheading = $('#productTitle').text().trim();
           var siteheadidsdng = $('.imgTagWrapper').find('img').attr('data-old-hires');
           var sitestrckprice = $('.priceBlockStrikePriceString').text().trim();
-          console.log('sitestrckprice: ', sitestrckprice);
           var sitestrckpricessds = $('#priceblock_ourprice').text().trim();
-          console.log('sitestrckpricessds: ', sitestrckpricessds);
           var savepercent = $('.priceBlockSavingsString').text().replace(/\s\s+/g, '');
-          console.log('savepercent: ', savepercent);
           // var savepercent = $('.priceBlockSavingsString').text().replace(/\s\s+/g, '').replace(/\([^()]*\)/g, '');
           var savepercentage = $('.priceBlockSavingsString').text().match(/\(([^)]+)\)/);
-          console.log('savepercentage: ', savepercentage);
           var siteTitle = $('.priceBlockDealPriceString').text().replace(/\s\s+/g, '');
-          console.log('siteTitle: ', siteTitle);
           var avilabilty = $('#availability').find('span').text().trim();
-          console.log('avilabilty: ', avilabilty);
           let sqlss = "INSERT INTO post_telegram (post_id,data) VALUES (" + storeId + ",'demo')";
           connection.query(sqlss, function (err, rides) {
             if (err) {
@@ -300,7 +294,6 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
         connection.query(sqls, function (err, rides) {
           if (err) {
             console.log('err: ', err);
-          setup();
           }
           for (let i = 0; i < lastInsertId - rides[0].post_id; i++) {
             let nextId = rides[0].post_id + i + 1;
@@ -382,7 +375,6 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                       connection.query(sqlssnet, function (err, flagsData) {
                         if (err) {
                           console.log('err: ', err);
-                        setup();
                         }
                         let ListflagDatass = flagsData;
                       let tagnot;
@@ -447,7 +439,6 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
 //                       }
 //                       if(tagnotFlipkart.match(/[?]/g)){
 //                       let finalLink =tagnotFlipkart.split('&');
-//                       console.log('finalLink: ', finalLink);
 //                       for (let h = 0; h < finalLink.length; h++) {
 //                         if(finalLink[h].match(/[?]/g)){
 //                           if(finalLink[h].match(/affid/g)){
@@ -477,7 +468,6 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
 //                       let ren = Math.random().toString(36).substring(7);
 //                     let tagnots= finalLink.join('&').replace(/@/g, '').replace(/&&/g, '&').replace(/(\?&)/g, '?').replace(/&&&/g, '&');
 //                     tagnot= tagnots.concat('&affid=siqra1446').concat('&affExtParam1='+month+day+year+'cl'+hour+minu+ren).concat('&affExtParam2=FK_Kudrat').replace(/(\?&)/g, '?').replace(/&&/g, '&');
-//                      console.log('tagnot: ', tagnot);
 //                     }
 //                     else{
 //                       var dateObj = new Date();
@@ -495,7 +485,6 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
 //                           console.log('dddd: ', dddd);
 //                           let response =await bitly.shorten(dddd);
 //                         final[j] = array[j].replace(urls[0].replace(/@/g, ' ').trim(),response.link).replace(/.#x...../g,' %E2%99%A8 ').replace(/&/g, 'and').replace(/;/g, ' ');
-//                         console.log('final[j]: ', final[j]);
 //                         //  postImageWidth(response.link,ListflagData.bestshopping_token);
 //                       }
 //                     }
@@ -593,8 +582,6 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
              }else{
               finalPostList = JSON.parse(ListflagData.tele_values).telenogroup;
              }
-              console.log('finalPostList: ', finalPostList);
-              console.log('finalPostList: ', finalPostList.length);
               let insertFeild = [rides[0].post_id + i, JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,""))]
               let sqlss = "INSERT INTO post_telegram (post_id,data) VALUES (" + nextId + "," + JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,"")) + ")";
               connection.query(sqlss, [insertFeild], function (err, rides) {
@@ -602,7 +589,6 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                   console.log('err: ', err);
                 }else{
               if(ListflagData.ihd_tele_flag == '0' && ListflagData.ihd_watts_flag == '0' ){
-                console.log('---0');
               }else if(ListflagData.ihd_tele_flag == '1' && ListflagData.ihd_watts_flag == '1' ){
                 for (let l = 0; l < finalPostList.length; l++) {
                   // if(finalPostList[l].groupflag == '0'){
@@ -644,8 +630,6 @@ function postImageWidth(post_link,token,amzn_data,storeId,finalAmznData,telegrou
                }else{
                 finalPostList = JSON.parse(ListflagData.tele_values).telenogroup;
                }
-                console.log('finalPostList: ', finalPostList);
-                console.log('finalPostList: ', finalPostList.length);
                 let insertFeild = [rides[0].post_id + i, JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,""))]
                 let sqlss = "INSERT INTO post_telegram (post_id,data) VALUES (" + nextId + "," + JSON.stringify(finalAmazon.replace(/[^0-9a-zA-Zㄱ-힣+×÷=%♤♡☆♧)(*&^/~#@!-:;,?`_|<>{}¥£€$◇■□●○•°※¤《》¡¿₩\[\]\"\' \\]/g ,"")) + ")";
                 connection.query(sqlss, [insertFeild], function (err, rides) {
@@ -723,7 +707,6 @@ router.post('/getAllInOneData', function (req, res) {
       var sql = "Select count(*) as TotalCount from ??";
       connection.query(sql, ['post_telegram'], function (err, rides) {
         if (err) {
-          console.log('11');
           return nextCall({
             "message": "something went wrong",
           });
